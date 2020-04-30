@@ -13,3 +13,9 @@ class ParticipationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Participation
         fields = ["id", "tournment", "user", "note"]
+
+
+class ParticipationUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Participation
+        fields = ["id", "tournment", "note"]

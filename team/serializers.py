@@ -15,10 +15,16 @@ class TeamSerializer(serializers.ModelSerializer):
         fields = ["id", "team_name", "team_rank", "players"]
 
 
-class PlayerSerializer(serializers.ModelSerializer):
+class PlayersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Player
         fields = ["id", "user", "country", "style", "team"]
+
+
+class PlayerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Player
+        fields = ["id", "country", "style", "team"]
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -27,4 +33,3 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ["id", "username", "player"]
-
