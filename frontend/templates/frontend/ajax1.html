@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ajax Sample Text</title>
+    </head>
+
+    <body>
+        <button id="id">
+            click here
+        </button>
+        <div id="textBox">
+
+        </div>
+    </body>
+
+    <script>
+        let btn = document.getElementById("id")
+        let textBox = document.getElementById("textBox")
+        btn.addEventListener("click", showText)
+
+        function showText()
+        {
+            let xhr = new XMLHttpRequest
+
+            xhr.open("GET", "{% static 'frontend/sample.text' %}", true)
+
+            console.log("onreadystate: ", xhr.readyState)
+            xhr.onload = function ()
+            {
+                if (this.status === 200)
+                {
+                    textBox.innerHTML = this.responseText
+
+                } else
+                {
+                    textBox.innerHTML = "oops....Not found"
+                }
+            }
+            xhr.send()
+        }
+
+    </script>
+
+</html>

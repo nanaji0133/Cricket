@@ -21,6 +21,7 @@ urlpatterns = [
     path("api-auth/", include("rest_framework.urls")),
     path("team/", include("team.urls")),
     path("tournment/", include("tournment.urls")),
+    path("frontend/", include("frontend.urls")),
     path("rest-auth/", include("rest_auth.urls")),
     path("rest-auth/registration/", include("rest_auth.registration.urls")),
     path("accounts/", include("allauth.urls")),

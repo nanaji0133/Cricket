@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "team",
     "tournment",
+    "frontend",
     "rest_framework.authtoken",
     "rest_auth",
     "allauth",
@@ -129,6 +130,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 
 SITE_ID = 1
