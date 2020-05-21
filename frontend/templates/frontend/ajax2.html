@@ -1,0 +1,93 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ajax with sample json files</title>
+    </head>
+
+    <body>
+
+        <button id="btn1">click to get the user details</button>
+
+        <div id="user">
+
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <button id="btn2">click to get the users details</button>
+
+        <div id="users">
+
+        </div>
+
+        <script>
+            let btn1 = document.getElementById("btn1");
+            let btn2 = document.getElementById("btn2");
+
+            let div1 = document.getElementById("user");
+            let div2 = document.getElementById("users");
+
+            btn1.addEventListener("click", loadUser);
+            btn2.addEventListener("click", loadUsers);
+
+            function loadUser()
+            {
+                let xhr = new XMLHttpRequest;
+
+                xhr.open("GET", "{% static 'frontend/user.json' %}", true)
+
+                xhr.onload = function ()
+                {
+                    if (this.status === 200)
+                    {
+                        let user = JSON.parse(this.responseText)
+                        let output = ""
+                        output += `<ul> <li>id: ${user.id} </li> 
+                            <li>name: ${user.name} </li> 
+                            <li>email: ${user.email} </li>`
+                        div1.innerHTML = output
+                    }
+                }
+
+                xhr.send()
+            }
+
+            function loadUsers()
+            {
+                let xhr = new XMLHttpRequest;
+
+                xhr.open("GET", "{% static 'frontend/users.json' %}", true);
+
+                xhr.onload = function ()
+                {
+                    if (this.status === 200)
+                    {
+                        let users = JSON.parse(this.responseText);
+
+                        let output = "";
+
+                        for (let i in users)
+                        {
+                            output = `<ul> <li>id: ${users[i].id} </li> 
+                            <li>name: ${users[i].name} </li> 
+                            <li>email: ${users[i].email} </li>`
+                            div2.innerHTML += output
+                        }
+                    }
+                }
+                xhr.send();
+            }
+
+        </script>
+
+    </body>
+
+</html>
