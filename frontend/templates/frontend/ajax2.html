@@ -76,11 +76,12 @@
 
                         for (let i in users)
                         {
-                            output = `<ul> <li>id: ${users[i].id} </li> 
+                            output += `<ul> <li>id: ${users[i].id} </li> 
                             <li>name: ${users[i].name} </li> 
-                            <li>email: ${users[i].email} </li>`
-                            div2.innerHTML += output
+                            <li>email: ${users[i].email} </li> </ul>`
+
                         }
+                        div2.innerHTML = output
                     }
                 }
                 xhr.send();

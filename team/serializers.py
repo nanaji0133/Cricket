@@ -8,7 +8,7 @@ User = get_user_model()
 
 
 class TeamSerializer(serializers.ModelSerializer):
-    players = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    players = serializers.StringRelatedField(many=True, read_only=True)
 
     class Meta:
         model = Team
