@@ -27,3 +27,12 @@ class TeamsFrontendView(APIView):
 
     def get(self, request):
         return Response({})
+
+
+# not releated to this project just for learning
+class SampleJquery(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "frontend/index.html"
+
+    def get(self, request):
+        return Response({})
