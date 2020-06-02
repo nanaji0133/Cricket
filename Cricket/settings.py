@@ -25,7 +25,7 @@ SECRET_KEY = "of*i!481hyp$&jrq(lz#ta3fmr-r00+^^jeix0%%hh8##n)_n8"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 AUTH_USER_MODEL = "team.User"
 # Application definition
@@ -49,9 +49,11 @@ INSTALLED_APPS = [
     "rest_auth.registration",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.facebook",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -60,6 +62,8 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = "Cricket.urls"
 
