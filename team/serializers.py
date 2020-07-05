@@ -1,8 +1,7 @@
-from .models import Team, Player
-
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from django.contrib.auth import get_user_model
+from .models import Player, Team
 
 User = get_user_model()
 
@@ -28,8 +27,8 @@ class PlayerSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    player = PlayerSerializer(read_only=True)
+    # player = PlayerSerializer(read_only=True)
 
     class Meta:
         model = User
-        fields = ["id", "username", "player"]
+        fields = ["id", "username"]
